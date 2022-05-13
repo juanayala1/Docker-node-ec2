@@ -1,0 +1,14 @@
+{
+  "name": "docker-node-ec2",
+  "version": "1.0.0",
+  "description": "proyecto con ejercicio de dockerización de un api node-express y despliegue con github actions en ec2 de aws",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Juan Ayala",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

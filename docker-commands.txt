@@ -1,0 +1,40 @@
+1. Dar permisos a la keypair descargada de la instancia de aws:
+
+juanayala@Admins-MacBook-Pro-3 downloads % chmod 400 KeyPairEC2.pem
+
+2. Conectarse al DNS público de la instancia usando el keypair descargado: (Se debe habilitar puerto a usar en seguridad dentro de la instancia en aws)
+
+juanayala@Admins-MacBook-Pro-3 downloads % ssh -i KeyPairEC2.pem ec2-user@ec2-54-211-21-213.compute-1.amazonaws.com
+
+The authenticity of host 'ec2-54-211-21-213.compute-1.amazonaws.com (54.211.21.213)' can't be established.
+ED25519 key fingerprint is SHA256:heh9A2hoVuMo+IXdRfBe4LKltuF1zzfWiCxoxGN6zBE.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-54-211-21-213.compute-1.amazonaws.com' (ED25519) to the list of known hosts.
+
+   __|  __|  __|
+   _|  (   \__ \   Amazon ECS-Optimized Amazon Linux AMI
+ ____|\___|____/
+
+For documentation, visit http://aws.amazon.com/documentation/ecs
+-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+
+3. Ya conectado dentro de la instancia de aws, ejecutar docker run, para que se descargue la imagen docker, previamente montada en docker hub:
+
+[ec2-user@ip-172-31-84-115 ~]$ docker run -p 3000:3000 juanayalaclabs/node-ec2-api
+Unable to find image 'juanayalaclabs/node-ec2-api:latest' locally
+latest: Pulling from juanayalaclabs/node-ec2-api
+cbdbe7a5bc2a: Pull complete 
+780514bed1ad: Pull complete 
+5d74fb112a7d: Pull complete 
+4b9536424fa1: Pull complete 
+9da82fb82d51: Pull complete 
+e92790158c63: Pull complete 
+3b5611981295: Pull complete 
+c53fd4b4d0af: Pull complete 
+Digest: sha256:ee4979b016dfb56ec3a1e24daff43323ee71fd3c84e04801060a8fbf1cf1ca21
+Status: Downloaded newer image for juanayalaclabs/node-ec2-api:latest
+Aplicación de ejemplo escuchando en el puerto 3000!
+
+ruta publica donde se ejecuta la instancia.
+http://ec2-54-211-21-213.compute-1.amazonaws.com:3000/status
